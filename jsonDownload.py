@@ -1,7 +1,10 @@
+import os
 import requests
 import json
 
-api_key = '42ecb96491ef131b24963fc08458e829'
+api_key = os.environ.get('ODDS_API_KEY')
+if not api_key or not api_key.strip():
+    raise ValueError('Set ODDS_API_KEY before running jsonDownload.py.')
 sport_key = 'upcoming'
 
 # Make the API request
